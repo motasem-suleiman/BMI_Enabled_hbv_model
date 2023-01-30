@@ -1,0 +1,30 @@
+{
+    "global": {
+        "formulations": [
+            { 
+                "name": "bmi_python",
+                "params": {
+                    "python_type": "HBV_BMI_Wrapper.hbv_bmi",
+                    "model_type_name": "hbv_bmi",
+                    "init_config": "./config_hbv.yml",
+                    "main_output_variable": "water_output",
+                    "uses_forcing_file": false,
+                    "variables_names_map" : {
+                        "timestep_rainfall_input": "atmosphere_water__liquid_equivalent_precipitation_rate",
+                        "temperature_k": "land_surface_air__temperature"
+                    }
+                }
+            }
+        ],
+        "forcing": {
+            "provider": "CsvPerFeature",
+            "file_pattern": ".*LoganRiver.*.csv",
+            "path": "./forcing"
+        }
+    },
+    "time": {
+        "start_time": "1981-01-01 00:00:00",
+        "end_time": "2020-12-31 00:00:00",
+        "output_interval": 86400
+    }
+}
